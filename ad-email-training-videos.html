@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Ad Sales Email Draft Training | Haven Lifestyles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+  <style>
+    /* ------------------------------------------------------------------ */
+    /*  Design tokens (matched to shipping-form)                           */
+    /* ------------------------------------------------------------------ */
+    :root {
+      --background: hsl(40, 20%, 98%);
+      --foreground: hsl(0, 0%, 0%);
+      --card: hsl(0, 0%, 100%);
+      --card-foreground: hsl(220, 20%, 12%);
+      --primary: hsl(243, 55%, 50%);
+      --primary-foreground: hsl(0, 0%, 100%);
+      --accent: hsl(243, 55%, 96%);
+      --accent-foreground: hsl(243, 55%, 40%);
+      --muted-foreground: hsl(0, 0%, 0%);
+      --border: hsl(40, 10%, 88%);
+      --label: hsl(0, 0%, 0%);
+      --helper: hsl(0, 0%, 0%);
+      --radius: 0.75rem;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Reset & base                                                       */
+    /* ------------------------------------------------------------------ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Source Serif 4', 'Times New Roman', serif;
+      font-size: 17px;
+      background-color: #ffffff;
+      color: var(--foreground);
+      letter-spacing: -0.01em;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .font-display {
+      font-family: 'DM Serif Display', serif;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Banner (icon pattern + logo — 75px, no fade)                       */
+    /* ------------------------------------------------------------------ */
+    .banner {
+      position: relative;
+      width: 100%;
+      height: 75px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid rgb(218, 218, 218);
+      background-color: var(--background);
+      background-size: 600px 150px;
+      background-repeat: repeat;
+      background-position: center center;
+    }
+
+    .banner-logo {
+      position: relative;
+      z-index: 10;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Container                                                          */
+    /* ------------------------------------------------------------------ */
+    .container {
+      max-width: 672px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Header section                                                     */
+    /* ------------------------------------------------------------------ */
+    .page-header {
+      margin-bottom: 2.5rem;
+      animation: fade-in 0.4s ease-out;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.375rem 0.75rem;
+      border-radius: 9999px;
+      border: 1px solid hsla(220, 20%, 12%, 0.3);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--foreground);
+      margin-bottom: 1rem;
+    }
+
+    .badge svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--foreground);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .page-header h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2rem, 4.5vw, 2.5rem);
+      font-weight: 700;
+      color: var(--foreground);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    .page-header .subtitle {
+      color: var(--helper);
+      font-size: 18px;
+      margin-top: 0.75rem;
+      line-height: 1.6;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Divider                                                            */
+    /* ------------------------------------------------------------------ */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 0 2rem;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Video cards                                                        */
+    /* ------------------------------------------------------------------ */
+    .video-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      animation: fade-in 0.4s ease-out both;
+    }
+
+    .video-card:nth-child(2) { animation-delay: 0.05s; }
+    .video-card:nth-child(3) { animation-delay: 0.1s; }
+
+    .icon-box {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 0.5rem;
+      background-color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2px;
+    }
+
+    .icon-box svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--accent-foreground);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .video-body {
+      flex: 1;
+    }
+
+    .video-body h2 {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--foreground);
+      line-height: 1.3;
+    }
+
+    .video-meta {
+      font-size: 15px;
+      color: var(--muted-foreground);
+      margin-top: 0.25rem;
+      line-height: 1.5;
+    }
+
+    .video-body p {
+      font-size: 16px;
+      color: var(--helper);
+      margin-top: 0.5rem;
+      line-height: 1.6;
+    }
+
+    .video-body .summary {
+      font-size: 16px;
+      color: var(--helper);
+      margin-top: 0.5rem;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Expandable details                                                 */
+    /* ------------------------------------------------------------------ */
+    .expand-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 0.6rem;
+      padding: 0;
+      border: none;
+      background: none;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted-foreground);
+      cursor: pointer;
+      transition: color 0.15s ease;
+    }
+
+    .expand-toggle:hover {
+      color: var(--foreground);
+    }
+
+    .expand-toggle svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 0.2s ease;
+    }
+
+    .expand-toggle[aria-expanded="true"] svg {
+      transform: rotate(180deg);
+    }
+
+    .expandable-content {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.25s ease;
+    }
+
+    .expandable-content[data-open="true"] {
+      grid-template-rows: 1fr;
+    }
+
+    .expandable-inner {
+      overflow: hidden;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Key steps list                                                     */
+    /* ------------------------------------------------------------------ */
+    .steps-list {
+      margin-top: 0.75rem;
+      padding-left: 1.25rem;
+      list-style: decimal;
+    }
+
+    .steps-list li {
+      font-size: 15px;
+      color: var(--helper);
+      line-height: 1.6;
+      margin-bottom: 0.4rem;
+      padding-left: 0.25rem;
+    }
+
+    .watch-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.75rem;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--primary);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      text-decoration-color: hsla(243, 55%, 50%, 0.3);
+      transition: text-decoration-color 0.2s ease;
+    }
+
+    .watch-link:hover {
+      text-decoration-color: var(--primary);
+    }
+
+    .watch-link svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--primary);
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Card dividers between items                                        */
+    /* ------------------------------------------------------------------ */
+    .card-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 0 2rem;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Animation                                                          */
+    /* ------------------------------------------------------------------ */
+    @keyframes fade-in {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Responsive                                                         */
+    /* ------------------------------------------------------------------ */
+    @media (max-width: 600px) {
+      .container { padding: 1.5rem 1rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner with icon pattern (no logo) -->
+  <div class="banner" id="banner"></div>
+
+  <div class="container">
+
+    <!-- Page header -->
+    <div class="page-header">
+      <div class="badge">
+        <!-- play-circle icon -->
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"/></svg>
+        Training
+      </div>
+      <h1>Ad Sales Email Drafts</h1>
+      <p class="subtitle">
+        Video walkthroughs for creating advertising email drafts across our publications. Watch each to learn the process, then use the templates to get started.
+      </p>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Video 1 -->
+    <div class="video-card">
+      <div class="icon-box">
+        <!-- mail icon -->
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 6l10 7 10-7"/></svg>
+      </div>
+      <div class="video-body">
+        <h2>Creating First Emails for a New Slate</h2>
+        <div class="video-meta">21 min</div>
+        <p>Walks through the end-to-end workflow for generating first-email drafts for a new HAVEN campaign slate using Google Sheets, Slack triggers, Lindy AI automation, and Google Apps Script.</p>
+
+        <button class="expand-toggle" aria-expanded="false" onclick="toggleExpand(this)">
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          View key steps
+        </button>
+        <div class="expandable-content" data-open="false">
+          <div class="expandable-inner">
+            <ol class="steps-list">
+              <li>Review and select themes/events from the Themes document (e.g., PGA Championship, Suncoast Boat Show) for the campaign.</li>
+              <li>Prepare the "New Drafts Creation Spreadsheet" with the correct keyword (<strong>New Themes</strong>) so the Lindy agent follows the right automation path.</li>
+              <li>Copy theme data for each market (New England, Philadelphia, Tampa, Palm Beach, Arizona Southwest, Las Vegas, Hawaii) into the spreadsheet.</li>
+              <li>Post the prepared rows into a Slack channel, triggering the Lindy AI workflow to auto-generate first-email drafts per market.</li>
+              <li>Collect generated drafts, apply formatting via Apps Script, and verify trigger words, seasonal language, events, and feeder markets.</li>
+              <li>Split drafts into separate documents per market using another Apps Script.</li>
+              <li>Create updated data notes for the slate (e.g., "spring market" messaging).</li>
+              <li>Review and lightly edit drafts — event wording, feeder markets, etc.</li>
+              <li>Send drafts for internal review (Sophie → Usama → Web-Ray channel for testing).</li>
+            </ol>
+            <p class="summary">In short: demonstrates how to automatically generate, organize, and prepare first email outreach drafts for multiple HAVEN markets using AI automation triggered through Slack.</p>
+          </div>
+        </div>
+
+        <a class="watch-link" href="https://www.loom.com/share/51cf3fd73a0444ea905d5656512a777f" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          Watch video
+        </a>
+      </div>
+    </div>
+
+    <hr class="card-divider">
+
+    <!-- Video 2 -->
+    <div class="video-card">
+      <div class="icon-box">
+        <!-- file-plus icon -->
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+      </div>
+      <div class="video-body">
+        <h2>PA Creation + RE Creation</h2>
+        <div class="video-meta">18 min</div>
+        <p>Explains the process for creating PA (Previous Advertiser) email drafts and RE (follow-up) email drafts for a HAVEN campaign slate after the first email drafts are completed.</p>
+
+        <button class="expand-toggle" aria-expanded="false" onclick="toggleExpand(this)">
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          View key steps
+        </button>
+        <div class="expandable-content" data-open="false">
+          <div class="expandable-inner">
+            <ol class="steps-list">
+              <li>Create PA drafts by copying the same market drafts (e.g., New England, Philadelphia, Tampa, Palm Beach, Arizona, Las Vegas, Hawaii) into the PA creation document.</li>
+              <li>Run the PA formatting script, which adjusts the email wording to reflect that the recipient has advertised previously, adding familiarity and relationship-based language.</li>
+              <li>Update specific lines manually, such as replacing the closing question with wording like: "Would you like me to share rate details or pull up your last layout?"</li>
+              <li>Copy the finalized PA drafts into each market's document for use in upcoming campaigns.</li>
+              <li>Generate RE (follow-up) drafts by modifying the Slack trigger keyword to "RE:", which tells the Lindy AI agent to create follow-up emails based on the existing first email themes.</li>
+              <li>Paste the market links into Slack, allowing Lindy to analyze the first emails and automatically generate RE drafts for each theme.</li>
+              <li>Organize and format the RE drafts using Apps Script and adjust pricing or promotional offers (e.g., BOGO deals or different price points depending on the market).</li>
+              <li>Review deals and spam-filter considerations (removing bold/italic formatting).</li>
+              <li>Save RE drafts in the RE creation document, then later paste them into each market's draft document before the follow-up emails are scheduled to send.</li>
+            </ol>
+            <p class="summary">In short: shows how to create relationship-focused PA emails and automated RE follow-up emails using Lindy AI, Slack triggers, and formatting scripts, then organize them for each market before sending.</p>
+          </div>
+        </div>
+
+        <a class="watch-link" href="https://www.loom.com/share/caf9d6aea4ac4ed2b6f7f705403a5cb8" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          Watch video
+        </a>
+      </div>
+    </div>
+
+    <hr class="card-divider">
+
+    <!-- Video 3 -->
+    <div class="video-card">
+      <div class="icon-box">
+        <!-- layers icon -->
+        <svg viewBox="0 0 24 24"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      </div>
+      <div class="video-body">
+        <h2>Creating Supplementary Drafts</h2>
+        <div class="video-meta">17 min</div>
+        <p>Demonstrates the workflow for creating supplementary email drafts for a HAVEN campaign slate — similar to generating RE drafts but requiring additional manual adjustments for edition variables, market names, and seasonal language.</p>
+
+        <button class="expand-toggle" aria-expanded="false" onclick="toggleExpand(this)">
+          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+          View key steps
+        </button>
+        <div class="expandable-content" data-open="false">
+          <div class="expandable-inner">
+            <ol class="steps-list">
+              <li>Identify the slate markets (e.g., Miami, Fort Lauderdale, Upstate, Minnesota, Canada, Vancouver, California).</li>
+              <li>Trigger the Lindy AI automation by posting draft links into the Slack draft creation channel to generate supplementary drafts.</li>
+              <li>Open and organize the generated drafts by market.</li>
+              <li>Adjust edition variables and market names (e.g., Homes + Lifestyles, specific city editions) to ensure the correct distribution language.</li>
+              <li>Copy the drafts into a master document, labeling sections by market.</li>
+              <li>Run a formatting script to separate and organize the drafts automatically.</li>
+              <li>Manually update certain sections using content from the previous campaign slate to ensure consistency with existing templates.</li>
+              <li>Verify trigger keywords (e.g., "spring market") and update seasonal language where needed.</li>
+              <li>Update special drafts such as Under $300K first email and RE drafts.</li>
+              <li>Remove bold/italic formatting to standardize the email style.</li>
+              <li>Copy finalized supplementary drafts into the Data Notes documents for each market so the sales team can use them.</li>
+            </ol>
+            <p class="summary">In short: shows the process of generating, editing, and organizing supplementary outreach email drafts across multiple markets using Lindy automation, manual template adjustments, and standardized formatting before inserting them into campaign data notes.</p>
+          </div>
+        </div>
+
+        <a class="watch-link" href="https://www.loom.com/share/e4b0d77c491141a5b576a6f177cbe1e2" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+          Watch video
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Generate the icon-pattern SVG banner -->
+  <script>
+    const svg = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="600" height="150" viewBox="0 0 600 150">
+        <defs>
+          <pattern id="icons" x="0" y="0" width="200" height="90" patternUnits="userSpaceOnUse">
+            <g transform="translate(10, 10) scale(0.75)" stroke="black" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
+              <rect x="0" y="2" width="22" height="16" rx="2"/><path d="M0 4l11 7 11-7"/>
+            </g>
+            <g transform="translate(55, 12) scale(0.7)" stroke="black" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
+              <circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/>
+            </g>
+            <g transform="translate(105, 10) scale(0.65)" stroke="black" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+            </g>
+            <g transform="translate(155, 9) scale(0.7)" stroke="black" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
+            </g>
+            <g transform="translate(25, 52) scale(0.6)" stroke="black" stroke-width="1.3" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
+              <path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/>
+            </g>
+            <g transform="translate(72, 50) scale(0.7)" stroke="black" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
+              <rect x="0" y="2" width="22" height="16" rx="2"/><path d="M0 4l11 7 11-7"/>
+            </g>
+            <g transform="translate(118, 52) scale(0.7)" stroke="black" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
+              <circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/>
+            </g>
+            <g transform="translate(162, 50) scale(0.75)" stroke="black" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+            </g>
+          </pattern>
+        </defs>
+        <rect width="600" height="150" fill="hsl(40,20%,98%)"/>
+        <rect width="600" height="150" fill="url(#icons)"/>
+      </svg>`;
+    const dataUrl = 'data:image/svg+xml,' + encodeURIComponent(svg.trim());
+    document.getElementById('banner').style.backgroundImage = 'url("' + dataUrl + '")';
+
+    /* Expand / collapse toggle */
+    function toggleExpand(btn) {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      const content = btn.nextElementSibling;
+      btn.setAttribute('aria-expanded', !isExpanded);
+      content.setAttribute('data-open', !isExpanded);
+      btn.querySelector('svg');
+      // Update button text
+      const textNode = btn.childNodes[btn.childNodes.length - 1];
+      if (!isExpanded) {
+        textNode.textContent = ' Hide key steps';
+      } else {
+        textNode.textContent = ' View key steps';
+      }
+    }
+  </script>
+
+</body>
+</html>
