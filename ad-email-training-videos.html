@@ -148,6 +148,7 @@
       gap: 0.75rem;
       margin-bottom: 2rem;
       animation: fade-in 0.4s ease-out both;
+      --icon-offset: calc(36px + 0.75rem);
     }
 
     .video-card:nth-child(2) { animation-delay: 0.05s; }
@@ -201,6 +202,12 @@
       line-height: 1.6;
     }
 
+    .video-body p,
+    .video-body .expand-toggle,
+    .video-body .expandable-content {
+      margin-left: calc(-1 * var(--icon-offset));
+    }
+
     .video-body .summary {
       font-size: 15px;
       color: var(--helper);
@@ -222,10 +229,13 @@
       background: none;
       font-family: inherit;
       font-size: 13px;
-      font-weight: 500;
-      color: var(--muted-foreground);
+      font-weight: 700;
+      color: var(--helper);
       cursor: pointer;
       transition: color 0.15s ease;
+      text-decoration: underline;
+      text-decoration-color: hsla(0, 0%, 0%, 0.25);
+      text-underline-offset: 3px;
     }
 
     .expand-toggle:hover {
@@ -355,6 +365,11 @@
     /* ------------------------------------------------------------------ */
     @media (max-width: 600px) {
       .container { padding: 1.5rem 1rem 3rem; }
+      .video-body p,
+      .video-body .expand-toggle,
+      .video-body .expandable-content {
+        margin-left: 0;
+      }
     }
   </style>
 </head>
@@ -389,31 +404,38 @@
       <div class="video-body">
         <h2>Creating First Emails for a New Slate</h2>
         <div class="video-meta">21 min</div>
-        <p>Walks through the end-to-end workflow for generating first-email drafts for a new HAVEN campaign slate using the <a class="res-link" href="https://docs.google.com/spreadsheets/d/1kqYI-24ZL1_GvJgkLPS0FZWfaNeZ1GYFGkaCxHuea20/edit?gid=0#gid=0" target="_blank">New Drafts Creation Sheet</a>, <a class="res-link" href="https://fineportfolio.slack.com/archives/C08PJ4ULYMC" target="_blank">Slack triggers</a>, <a class="res-link" href="https://chat.lindy.ai/ryan-raders-workspace/lindy/draft-creation-680be74c6f519d25204cd8d9/tasks" target="_blank">Lindy AI automation</a>, and Google Apps Script. Trigger keyword: <strong>New Themes:</strong></p>
+        <p>Walks through the end-to-end workflow for generating first-email drafts for a new HAVEN campaign slate using the <a class="res-link" href="https://docs.google.com/spreadsheets/d/1kqYI-24ZL1_GvJgkLPS0FZWfaNeZ1GYFGkaCxHuea20/edit?gid=0#gid=0" target="_blank">New Drafts Creation Sheet</a>, <a class="res-link" href="https://fineportfolio.slack.com/archives/C08PJ4ULYMC" target="_blank">Slack triggers</a>, <a class="res-link" href="https://chat.lindy.ai/ryan-raders-workspace/lindy/draft-creation-680be74c6f519d25204cd8d9/tasks" target="_blank">Lindy AI automation</a>, and Google Apps Script. Required trigger: "Create drafts"; Path keyword: "New Themes:".</p>
 
-        <button class="expand-toggle" aria-expanded="false" onclick="toggleExpand(this)">
-          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          View key steps
+        <button class="expand-toggle" data-open-text="View key steps" data-close-text="Hide key steps" aria-expanded="false" onclick="toggleExpand(this)">
+          <span class="toggle-text">View key steps</span>
         </button>
         <div class="expandable-content" data-open="false">
           <div class="expandable-inner">
             <ol class="steps-list">
               <li>Review and select themes/events from the Themes document (e.g., PGA Championship, Suncoast Boat Show) for the campaign.</li>
-              <li>Prepare the <a class="res-link" href="https://docs.google.com/spreadsheets/d/1kqYI-24ZL1_GvJgkLPS0FZWfaNeZ1GYFGkaCxHuea20/edit?gid=0#gid=0" target="_blank">New Drafts Creation Sheet</a> with the correct keyword (<strong>New Themes:</strong>) so the <a class="res-link" href="https://chat.lindy.ai/ryan-raders-workspace/lindy/draft-creation-680be74c6f519d25204cd8d9/tasks" target="_blank">Lindy agent</a> follows the right automation path.</li>
+              <li>Prepare the <a class="res-link" href="https://docs.google.com/spreadsheets/d/1kqYI-24ZL1_GvJgkLPS0FZWfaNeZ1GYFGkaCxHuea20/edit?gid=0#gid=0" target="_blank">New Drafts Creation Sheet</a> with the correct keyword ("New Themes:") so the <a class="res-link" href="https://chat.lindy.ai/ryan-raders-workspace/lindy/draft-creation-680be74c6f519d25204cd8d9/tasks" target="_blank">Lindy agent</a> follows the right automation path.</li>
               <li>Copy theme data for each market (New England, Philadelphia, Tampa, Palm Beach, Arizona Southwest, Las Vegas, Hawaii) into the spreadsheet.</li>
               <li>Post the prepared rows into the <a class="res-link" href="https://fineportfolio.slack.com/archives/C08PJ4ULYMC" target="_blank">Draft Creation Slack channel</a>, triggering the Lindy AI workflow to auto-generate first-email drafts per market.</li>
               <li>Collect generated drafts in the <a class="res-link" href="https://docs.google.com/document/d/1nqbO6DMreg3wITgKNhu-L5YVmRiZ1bOpNZmGC-jbPUE/edit?tab=t.0" target="_blank">First Emails Creation Doc</a>, apply formatting via Apps Script, and verify trigger words, seasonal language, events, and feeder markets.</li>
               <li>Split drafts into separate documents per market using another Apps Script.</li>
               <li>Create updated <a class="res-link" href="https://docs.google.com/document/u/1/?tgif=d" target="_blank">data notes</a> for the slate (e.g., "spring market" messaging).</li>
               <li>Review and lightly edit drafts — event wording, feeder markets, etc.</li>
-              <li>Send drafts for internal review (Sophie → Usama → Web-Ray channel for testing).</li>
+              <li>Send drafts for internal review (Sophie → Usama → Yujia channel for testing).</li>
             </ol>
             
           </div>
         </div>
 
-        <div class="video-embed">
-          <iframe src="https://www.loom.com/embed/51cf3fd73a0444ea905d5656512a777f" title="Creating First Emails for a New Slate" allowfullscreen></iframe>
+        <button class="expand-toggle" data-open-text="Show video" data-close-text="Hide video" aria-expanded="false" onclick="toggleExpand(this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span class="toggle-text">Show video</span>
+        </button>
+        <div class="expandable-content" data-open="false">
+          <div class="expandable-inner">
+            <div class="video-embed">
+              <iframe src="https://www.loom.com/embed/51cf3fd73a0444ea905d5656512a777f" title="Creating First Emails for a New Slate" allowfullscreen></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -429,11 +451,10 @@
       <div class="video-body">
         <h2>PA Creation + RE Creation</h2>
         <div class="video-meta">18 min</div>
-        <p>Explains the process for creating PA (Past Advertiser) email drafts using the <a class="res-link" href="https://docs.google.com/document/d/18260ChGJXdTwWmQSGx1LoYGfepVDT7HnnIOyFe_onqc/edit?tab=t.0" target="_blank">PA Creation Doc</a> and RE (follow-up) email drafts using the <a class="res-link" href="https://docs.google.com/document/d/1FWDsaYA_66Gv2ecWcCarGKAPpHt5UD88Hc0N6zOYxfM/edit?tab=t.0" target="_blank">RE Creation Doc</a> for a HAVEN campaign slate after the first email drafts are completed. Trigger keyword: <strong>RE:</strong></p>
+        <p>Explains creating PA (Past Advertiser) email drafts using the <a class="res-link" href="https://docs.google.com/document/d/18260ChGJXdTwWmQSGx1LoYGfepVDT7HnnIOyFe_onqc/edit?tab=t.0" target="_blank">PA Creation Doc</a> and RE (follow-up) email drafts using the <a class="res-link" href="https://docs.google.com/document/d/1FWDsaYA_66Gv2ecWcCarGKAPpHt5UD88Hc0N6zOYxfM/edit?tab=t.0" target="_blank">RE Creation Doc</a> for a HAVEN campaign slate after the first email drafts are completed. Required trigger: "Create drafts"; Path keyword: "RE:".</p>
 
-        <button class="expand-toggle" aria-expanded="false" onclick="toggleExpand(this)">
-          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          View key steps
+        <button class="expand-toggle" data-open-text="View key steps" data-close-text="Hide key steps" aria-expanded="false" onclick="toggleExpand(this)">
+          <span class="toggle-text">View key steps</span>
         </button>
         <div class="expandable-content" data-open="false">
           <div class="expandable-inner">
@@ -442,7 +463,7 @@
               <li>Run the PA formatting script, which adjusts the email wording to reflect that the recipient has advertised previously, adding familiarity and relationship-based language.</li>
               <li>Update specific lines manually, such as replacing the closing question with wording like: "Would you like me to share rate details or pull up your last layout?"</li>
               <li>Copy the finalized PA drafts into each market's document for use in upcoming campaigns.</li>
-              <li>Generate RE (follow-up) drafts by modifying the Slack trigger keyword to "RE:", which tells the <a class="res-link" href="https://chat.lindy.ai/ryan-raders-workspace/lindy/draft-creation-680be74c6f519d25204cd8d9/tasks" target="_blank">Lindy AI agent</a> to create follow-up emails based on the existing first email themes.</li>
+              <li>Generate RE (follow-up) drafts by modifying the Slack path to "RE:", which tells the <a class="res-link" href="https://chat.lindy.ai/ryan-raders-workspace/lindy/draft-creation-680be74c6f519d25204cd8d9/tasks" target="_blank">Lindy AI agent</a> to create follow-up emails based on the existing first email themes.</li>
               <li>Paste the market links into the <a class="res-link" href="https://fineportfolio.slack.com/archives/C08PJ4ULYMC" target="_blank">Draft Creation Slack channel</a>, allowing Lindy to analyze the first emails and automatically generate RE drafts for each theme.</li>
               <li>Organize and format the RE drafts using Apps Script and adjust pricing or promotional offers (e.g., BOGO deals or different price points depending on the market).</li>
               <li>Review deals and spam-filter considerations (removing bold/italic formatting).</li>
@@ -452,8 +473,16 @@
           </div>
         </div>
 
-        <div class="video-embed">
-          <iframe src="https://www.loom.com/embed/caf9d6aea4ac4ed2b6f7f705403a5cb8" title="PA Creation + RE Creation" allowfullscreen></iframe>
+        <button class="expand-toggle" data-open-text="Show video" data-close-text="Hide video" aria-expanded="false" onclick="toggleExpand(this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span class="toggle-text">Show video</span>
+        </button>
+        <div class="expandable-content" data-open="false">
+          <div class="expandable-inner">
+            <div class="video-embed">
+              <iframe src="https://www.loom.com/embed/caf9d6aea4ac4ed2b6f7f705403a5cb8" title="PA Creation + RE Creation" allowfullscreen></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -469,17 +498,16 @@
       <div class="video-body">
         <h2>Creating Supplementary Drafts</h2>
         <div class="video-meta">17 min</div>
-        <p>Demonstrates the workflow for creating supplementary email drafts using the <a class="res-link" href="https://docs.google.com/document/d/13GSW1u6seDxD-_9vB8R4HWC3Em-zFH7oYw582ukUpcc/edit?tab=t.0" target="_blank">Supplementary Draft Creation Doc</a> and the <a class="res-link" href="https://docs.google.com/spreadsheets/d/14NbLY-E50fI5tJtya2WUYRBpb655C4rMeeRqBgbwtJU/edit?gid=0#gid=0" target="_blank">Supplementary Draft Creation Sheet</a> — similar to generating RE drafts but requiring additional manual adjustments for edition variables, market names, and seasonal language. Trigger keyword: <strong>Supplementary:</strong></p>
+        <p>Demonstrates creating supplementary email drafts using the <a class="res-link" href="https://docs.google.com/document/d/13GSW1u6seDxD-_9vB8R4HWC3Em-zFH7oYw582ukUpcc/edit?tab=t.0" target="_blank">Supplementary Draft Creation Doc</a> and the <a class="res-link" href="https://docs.google.com/spreadsheets/d/14NbLY-E50fI5tJtya2WUYRBpb655C4rMeeRqBgbwtJU/edit?gid=0#gid=0" target="_blank">Supplementary Draft Creation Sheet</a> — similar to generating RE drafts but requiring additional manual adjustments for edition variables, market names, and seasonal language. Required trigger: "Create drafts"; Path keyword: "Supplementary:".</p>
 
-        <button class="expand-toggle" aria-expanded="false" onclick="toggleExpand(this)">
-          <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          View key steps
+        <button class="expand-toggle" data-open-text="View key steps" data-close-text="Hide key steps" aria-expanded="false" onclick="toggleExpand(this)">
+          <span class="toggle-text">View key steps</span>
         </button>
         <div class="expandable-content" data-open="false">
           <div class="expandable-inner">
             <ol class="steps-list">
               <li>Identify the slate markets (e.g., Miami, Fort Lauderdale, Upstate, Minnesota, Canada, Vancouver, California).</li>
-              <li>Trigger the <a class="res-link" href="https://chat.lindy.ai/ryan-raders-workspace/lindy/draft-creation-680be74c6f519d25204cd8d9/tasks" target="_blank">Lindy AI automation</a> by posting draft links into the <a class="res-link" href="https://fineportfolio.slack.com/archives/C08PJ4ULYMC" target="_blank">Draft Creation Slack channel</a> using the keyword <strong>Supplementary:</strong> to generate supplementary drafts.</li>
+              <li>Trigger the <a class="res-link" href="https://chat.lindy.ai/ryan-raders-workspace/lindy/draft-creation-680be74c6f519d25204cd8d9/tasks" target="_blank">Lindy AI automation</a> by posting draft links into the <a class="res-link" href="https://fineportfolio.slack.com/archives/C08PJ4ULYMC" target="_blank">Draft Creation Slack channel</a> using the path "Supplementary:" to generate supplementary drafts.</li>
               <li>Open and organize the generated drafts by market in the <a class="res-link" href="https://docs.google.com/document/d/13GSW1u6seDxD-_9vB8R4HWC3Em-zFH7oYw582ukUpcc/edit?tab=t.0" target="_blank">Supplementary Draft Creation Doc</a>.</li>
               <li>Adjust edition variables and market names (e.g., Homes + Lifestyles, specific city editions) to ensure the correct distribution language.</li>
               <li>Copy the drafts into a master document, labeling sections by market.</li>
@@ -494,8 +522,16 @@
           </div>
         </div>
 
-        <div class="video-embed">
-          <iframe src="https://www.loom.com/embed/e4b0d77c491141a5b576a6f177cbe1e2" title="Creating Supplementary Drafts" allowfullscreen></iframe>
+        <button class="expand-toggle" data-open-text="Show video" data-close-text="Hide video" aria-expanded="false" onclick="toggleExpand(this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+          <span class="toggle-text">Show video</span>
+        </button>
+        <div class="expandable-content" data-open="false">
+          <div class="expandable-inner">
+            <div class="video-embed">
+              <iframe src="https://www.loom.com/embed/e4b0d77c491141a5b576a6f177cbe1e2" title="Creating Supplementary Drafts" allowfullscreen></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -546,13 +582,12 @@
       const content = btn.nextElementSibling;
       btn.setAttribute('aria-expanded', !isExpanded);
       content.setAttribute('data-open', !isExpanded);
-      btn.querySelector('svg');
-      // Update button text
-      const textNode = btn.childNodes[btn.childNodes.length - 1];
-      if (!isExpanded) {
-        textNode.textContent = ' Hide key steps';
-      } else {
-        textNode.textContent = ' View key steps';
+
+      const openText = btn.dataset.openText || 'View details';
+      const closeText = btn.dataset.closeText || 'Hide details';
+      const textNode = btn.querySelector('.toggle-text');
+      if (textNode) {
+        textNode.textContent = isExpanded ? openText : closeText;
       }
     }
   </script>
