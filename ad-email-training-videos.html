@@ -318,6 +318,21 @@
       fill: var(--primary);
     }
 
+    .video-embed {
+      margin-top: 0.75rem;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    .video-embed iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+    }
+
     /* ------------------------------------------------------------------ */
     /*  Card dividers between items                                        */
     /* ------------------------------------------------------------------ */
@@ -397,10 +412,9 @@
           </div>
         </div>
 
-        <a class="watch-link" href="https://www.loom.com/share/51cf3fd73a0444ea905d5656512a777f" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          Watch video
-        </a>
+        <div class="video-embed">
+          <iframe src="https://www.loom.com/embed/51cf3fd73a0444ea905d5656512a777f" title="Creating First Emails for a New Slate" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
 
@@ -438,10 +452,9 @@
           </div>
         </div>
 
-        <a class="watch-link" href="https://www.loom.com/share/caf9d6aea4ac4ed2b6f7f705403a5cb8" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          Watch video
-        </a>
+        <div class="video-embed">
+          <iframe src="https://www.loom.com/embed/caf9d6aea4ac4ed2b6f7f705403a5cb8" title="PA Creation + RE Creation" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
 
@@ -481,10 +494,9 @@
           </div>
         </div>
 
-        <a class="watch-link" href="https://www.loom.com/share/e4b0d77c491141a5b576a6f177cbe1e2" target="_blank" rel="noopener">
-          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-          Watch video
-        </a>
+        <div class="video-embed">
+          <iframe src="https://www.loom.com/embed/e4b0d77c491141a5b576a6f177cbe1e2" title="Creating Supplementary Drafts" allowfullscreen></iframe>
+        </div>
       </div>
     </div>
 
