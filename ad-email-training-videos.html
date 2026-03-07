@@ -7,7 +7,7 @@
   <title>Sales Email Drafts</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:opsz,wght@14..32,100..900&display=swap" rel="stylesheet">
   <style>
     /* ------------------------------------------------------------------ */
     /*  Design tokens (matched to shipping-form)                           */
@@ -19,8 +19,8 @@
       --card-foreground: hsl(220, 20%, 12%);
       --primary: hsl(243, 55%, 50%);
       --primary-foreground: hsl(0, 0%, 100%);
-      --accent: hsl(243, 55%, 96%);
-      --accent-foreground: hsl(243, 55%, 40%);
+      --accent: hsl(40, 18%, 94%);
+      --accent-foreground: hsl(30, 10%, 30%);
       --muted-foreground: hsl(220, 10%, 46%);
       --border: hsl(40, 10%, 88%);
       --label: hsl(0, 0%, 15%);
@@ -35,8 +35,8 @@
     html { scroll-behavior: smooth; scroll-padding-top: 3.5rem; }
 
     body {
-      font-family: 'Merriweather', Georgia, serif;
-      background-color: #ffffff;
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: var(--background);
       color: var(--foreground);
       letter-spacing: -0.01em;
       line-height: 1.6;
@@ -66,10 +66,10 @@
     }
 
     .jump-nav a {
-      font-family: 'Merriweather', Georgia, serif;
+      font-family: 'Inter', system-ui, sans-serif;
       font-size: 13px;
       font-weight: 400;
-      color: var(--muted-foreground);
+      color: var(--foreground);
       text-decoration: none;
       padding: 0.25rem 0.5rem;
       border-radius: 0.375rem;
@@ -79,6 +79,12 @@
     .jump-nav a:hover {
       color: var(--foreground);
       background-color: var(--accent);
+    }
+
+    .jump-nav a.active {
+      color: var(--foreground);
+      background-color: var(--accent);
+      font-weight: 700;
     }
 
     .jump-nav-sep {
@@ -91,7 +97,7 @@
     /*  Container                                                          */
     /* ------------------------------------------------------------------ */
     .container {
-      max-width: 672px;
+      max-width: 820px;
       margin: 0 auto;
       padding: 2rem 1.5rem 4rem;
     }
@@ -164,6 +170,16 @@
       margin-bottom: 2rem;
       animation: fade-in 0.4s ease-out both;
       --icon-offset: calc(36px + 0.75rem);
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem 2.25rem;
+      box-shadow: 0 1px 3px hsla(0, 0%, 0%, 0.04);
+      transition: box-shadow 0.2s ease;
+    }
+
+    .video-card:hover {
+      box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.07);
     }
 
     .video-card:nth-child(2) { animation-delay: 0.05s; }
@@ -174,8 +190,9 @@
       flex-shrink: 0;
       width: 36px;
       height: 36px;
-      border-radius: 0.5rem;
+      border-radius: 50%;
       background-color: var(--accent);
+      border: 1px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -192,6 +209,42 @@
       stroke-linejoin: round;
     }
 
+    /* ------------------------------------------------------------------ */
+    /*  Timeline layout                                                    */
+    /* ------------------------------------------------------------------ */
+    .timeline-group {
+      position: relative;
+      margin-left: 18px;
+    }
+
+    .timeline-group::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: calc(1.75rem + 18px);
+      bottom: calc(1.75rem + 18px);
+      width: 1px;
+      background: var(--border);
+      z-index: 0;
+    }
+
+    .timeline-group .video-card {
+      position: relative;
+    }
+
+    .timeline-group .icon-box,
+    .standalone-timeline .icon-box {
+      position: absolute;
+      left: -18px;
+      top: 1.75rem;
+      z-index: 2;
+    }
+
+    .standalone-timeline {
+      position: relative;
+      margin-left: 18px;
+    }
+
     .video-body {
       flex: 1;
     }
@@ -205,10 +258,27 @@
     }
 
     .video-meta {
-      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 12px;
+      font-weight: 600;
       color: var(--muted-foreground);
-      margin-top: 0.25rem;
-      line-height: 1.5;
+      margin-top: 0.35rem;
+      line-height: 1;
+      padding: 0.25rem 0.6rem;
+      background: hsl(220, 15%, 95%);
+      border-radius: 9999px;
+      letter-spacing: 0.01em;
+    }
+
+    .video-meta::before {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E");
+      background-size: contain;
     }
 
     .video-body p {
@@ -221,7 +291,31 @@
     .video-body p,
     .video-body .expand-toggle,
     .video-body .expandable-content {
-      margin-left: calc(-1 * var(--icon-offset));
+      margin-left: 0;
+    }
+
+    .trigger-info {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem 1rem;
+      margin-top: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .trigger-info span {
+      display: inline;
+      font-size: 13px;
+      letter-spacing: -0.02em;
+      color: var(--muted-foreground);
+    }
+
+    .trigger-info code {
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--foreground);
     }
 
     .video-body .summary {
@@ -238,24 +332,31 @@
     .expand-toggle {
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
-      margin-top: 0.6rem;
-      padding: 0;
-      border: none;
-      background: none;
+      gap: 0.35rem;
+      margin-top: 0.75rem;
+      padding: 0.4rem 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 9999px;
+      background: var(--card);
       font-family: inherit;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--helper);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--muted-foreground);
       cursor: pointer;
-      transition: color 0.15s ease;
-      text-decoration: underline;
-      text-decoration-color: hsla(0, 0%, 0%, 0.25);
-      text-underline-offset: 3px;
+      transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+      text-decoration: none;
     }
 
     .expand-toggle:hover {
       color: var(--foreground);
+      background-color: hsl(220, 15%, 96%);
+      border-color: hsl(220, 10%, 80%);
+    }
+
+    .expand-toggle[aria-expanded="true"] {
+      background-color: var(--accent);
+      color: var(--foreground);
+      border-color: hsl(40, 12%, 80%);
     }
 
     .expand-toggle svg {
@@ -364,8 +465,18 @@
     /* ------------------------------------------------------------------ */
     .card-divider {
       border: none;
-      border-top: 1px solid var(--border);
-      margin: 0 0 2rem;
+      margin: 0.5rem 0 2rem;
+    }
+
+    /* ------------------------------------------------------------------ */
+    /*  Section break (between major topic areas)                          */
+    /* ------------------------------------------------------------------ */
+    .section-break {
+      border: none;
+      margin: 3rem -1.5rem;
+      padding: 0;
+      height: 6px;
+      background: linear-gradient(to right, var(--accent), hsl(243, 55%, 92%), var(--accent));
     }
 
     /* ------------------------------------------------------------------ */
@@ -386,6 +497,9 @@
       .video-body .expandable-content {
         margin-left: 0;
       }
+      .timeline-group {
+        margin-left: 18px;
+      }
     }
   </style>
 </head>
@@ -395,9 +509,7 @@
   <nav class="jump-nav">
     <a href="#first-emails">First Emails</a>
     <span class="jump-nav-sep">/</span>
-    <a href="#pa-re-creation">PA Creation</a>
-    <span class="jump-nav-sep">/</span>
-    <a href="#pa-re-creation">RE Creation</a>
+    <a href="#pa-re-creation">PA + RE Creation</a>
     <span class="jump-nav-sep">/</span>
     <a href="#supplementary-drafts">Supplementary Drafts</a>
     <span class="jump-nav-sep">/</span>
@@ -419,7 +531,7 @@
       </p>
     </div>
 
-    <hr class="divider">
+    <div class="timeline-group">
 
     <!-- Video 1 -->
     <div class="video-card" id="first-emails">
@@ -430,9 +542,14 @@
       <div class="video-body">
         <h2>Creating First Emails for a New Slate</h2>
         <div class="video-meta">21 min</div>
-        <p>Walks through the end-to-end workflow for generating first-email drafts for a new HAVEN campaign slate using the <a class="res-link" href="https://docs.google.com/spreadsheets/d/1kqYI-24ZL1_GvJgkLPS0FZWfaNeZ1GYFGkaCxHuea20/edit?gid=0#gid=0" target="_blank">New Drafts Creation Sheet</a>, <a class="res-link" href="https://fineportfolio.slack.com/archives/C08PJ4ULYMC" target="_blank">Slack triggers</a>, <a class="res-link" href="https://chat.lindy.ai/ryan-raders-workspace/lindy/draft-creation-680be74c6f519d25204cd8d9/tasks" target="_blank">Lindy AI automation</a>, and Google Apps Script. Required trigger: "Create drafts"; Path keyword: "New Themes:".</p>
+        <p>Walks through the end-to-end workflow for generating first-email drafts for a new HAVEN campaign slate using the <a class="res-link" href="https://docs.google.com/spreadsheets/d/1kqYI-24ZL1_GvJgkLPS0FZWfaNeZ1GYFGkaCxHuea20/edit?gid=0#gid=0" target="_blank">New Drafts Creation Sheet</a>, <a class="res-link" href="https://fineportfolio.slack.com/archives/C08PJ4ULYMC" target="_blank">Slack triggers</a>, <a class="res-link" href="https://chat.lindy.ai/ryan-raders-workspace/lindy/draft-creation-680be74c6f519d25204cd8d9/tasks" target="_blank">Lindy AI automation</a>, and Google Apps Script.</p>
+        <div class="trigger-info">
+          <span>Trigger: <code>Create drafts</code></span>
+          <span>Path: <code>New Themes:</code></span>
+        </div>
 
         <button class="expand-toggle" data-open-text="View key steps" data-close-text="Hide key steps" aria-expanded="false" onclick="toggleExpand(this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           <span class="toggle-text">View key steps</span>
         </button>
         <div class="expandable-content" data-open="false">
@@ -466,8 +583,6 @@
       </div>
     </div>
 
-    <hr class="card-divider">
-
     <!-- Video 2 -->
     <div class="video-card" id="pa-re-creation">
       <div class="icon-box">
@@ -477,9 +592,14 @@
       <div class="video-body">
         <h2>PA Creation + RE Creation</h2>
         <div class="video-meta">18 min</div>
-        <p>Explains creating PA (Past Advertiser) email drafts using the <a class="res-link" href="https://docs.google.com/document/d/18260ChGJXdTwWmQSGx1LoYGfepVDT7HnnIOyFe_onqc/edit?tab=t.0" target="_blank">PA Creation Doc</a> and RE (follow-up) email drafts using the <a class="res-link" href="https://docs.google.com/document/d/1FWDsaYA_66Gv2ecWcCarGKAPpHt5UD88Hc0N6zOYxfM/edit?tab=t.0" target="_blank">RE Creation Doc</a> for a HAVEN campaign slate after the first email drafts are completed. Required trigger: "Create drafts"; Path keyword: "RE:".</p>
+        <p>Explains creating PA (Past Advertiser) email drafts using the <a class="res-link" href="https://docs.google.com/document/d/18260ChGJXdTwWmQSGx1LoYGfepVDT7HnnIOyFe_onqc/edit?tab=t.0" target="_blank">PA Creation Doc</a> and RE (follow-up) email drafts using the <a class="res-link" href="https://docs.google.com/document/d/1FWDsaYA_66Gv2ecWcCarGKAPpHt5UD88Hc0N6zOYxfM/edit?tab=t.0" target="_blank">RE Creation Doc</a> for a HAVEN campaign slate after the first email drafts are completed.</p>
+        <div class="trigger-info">
+          <span>Trigger: <code>Create drafts</code></span>
+          <span>Path: <code>RE:</code></span>
+        </div>
 
         <button class="expand-toggle" data-open-text="View key steps" data-close-text="Hide key steps" aria-expanded="false" onclick="toggleExpand(this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           <span class="toggle-text">View key steps</span>
         </button>
         <div class="expandable-content" data-open="false">
@@ -513,8 +633,6 @@
       </div>
     </div>
 
-    <hr class="card-divider">
-
     <!-- Video 3 -->
     <div class="video-card" id="supplementary-drafts">
       <div class="icon-box">
@@ -524,9 +642,14 @@
       <div class="video-body">
         <h2>Creating Supplementary Drafts</h2>
         <div class="video-meta">17 min</div>
-        <p>Demonstrates creating supplementary email drafts using the <a class="res-link" href="https://docs.google.com/document/d/13GSW1u6seDxD-_9vB8R4HWC3Em-zFH7oYw582ukUpcc/edit?tab=t.0" target="_blank">Supplementary Draft Creation Doc</a> and the <a class="res-link" href="https://docs.google.com/spreadsheets/d/14NbLY-E50fI5tJtya2WUYRBpb655C4rMeeRqBgbwtJU/edit?gid=0#gid=0" target="_blank">Supplementary Draft Creation Sheet</a> — similar to generating RE drafts but requiring additional manual adjustments for edition variables, market names, and seasonal language. Required trigger: "Create drafts"; Path keyword: "Supplementary:".</p>
+        <p>Demonstrates creating supplementary email drafts using the <a class="res-link" href="https://docs.google.com/document/d/13GSW1u6seDxD-_9vB8R4HWC3Em-zFH7oYw582ukUpcc/edit?tab=t.0" target="_blank">Supplementary Draft Creation Doc</a> and the <a class="res-link" href="https://docs.google.com/spreadsheets/d/14NbLY-E50fI5tJtya2WUYRBpb655C4rMeeRqBgbwtJU/edit?gid=0#gid=0" target="_blank">Supplementary Draft Creation Sheet</a> — similar to generating RE drafts but requiring additional manual adjustments for edition variables, market names, and seasonal language.</p>
+        <div class="trigger-info">
+          <span>Trigger: <code>Create drafts</code></span>
+          <span>Path: <code>Supplementary:</code></span>
+        </div>
 
         <button class="expand-toggle" data-open-text="View key steps" data-close-text="Hide key steps" aria-expanded="false" onclick="toggleExpand(this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           <span class="toggle-text">View key steps</span>
         </button>
         <div class="expandable-content" data-open="false">
@@ -562,10 +685,12 @@
       </div>
     </div>
 
+    </div><!-- end .timeline-group -->
+
     <hr class="divider" style="margin-top: 2rem;">
 
     <!-- Section header: Stats Report Generation -->
-    <div class="page-header" style="margin-top: 1.5rem;">
+    <div class="page-header">
       <div class="badge">
         <!-- bar-chart-2 icon -->
         <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
@@ -577,9 +702,8 @@
       </p>
     </div>
 
-    <hr class="divider">
-
     <!-- Video 4 -->
+    <div class="standalone-timeline">
     <div class="video-card" id="stats-tool">
       <div class="icon-box">
         <!-- bar-chart icon -->
@@ -591,6 +715,7 @@
         <p>Explains how to use HAVEN's <a class="res-link" href="https://statsgen.havenlifestyles.com/" target="_blank">stats reporting tool</a> to generate performance reports for advertisers. The process involves locating the advertiser's listing in <a class="res-link" href="https://havenlifestyles.lightning.force.com/lightning/o/Opportunity/list?filterName=__Recent" target="_blank">Salesforce</a>, verifying the article and property details, exporting performance data from <a class="res-link" href="https://facebook.com/adsmanager" target="_blank">Facebook Ads Manager</a> and <a class="res-link" href="https://issuu.com/havenlifestyles" target="_blank">Issuu</a>, and uploading that data into a reporting form that automatically generates an analytics report. The final report link is then shared with the requesting sales rep so they can send it to the advertiser.</p>
 
         <button class="expand-toggle" data-open-text="View key steps" data-close-text="Hide key steps" aria-expanded="false" onclick="toggleExpand(this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
           <span class="toggle-text">View key steps</span>
         </button>
         <div class="expandable-content" data-open="false">
@@ -624,6 +749,7 @@
         </div>
       </div>
     </div>
+    </div><!-- end .standalone-timeline -->
 
   </div>
 
@@ -642,6 +768,28 @@
         textNode.textContent = isExpanded ? openText : closeText;
       }
     }
+
+    /* Active nav highlight on scroll */
+    (function() {
+      const sections = document.querySelectorAll('.video-card[id]');
+      const navLinks = document.querySelectorAll('.jump-nav a');
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navLinks.forEach(link => {
+              link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+            });
+          }
+        });
+      }, {
+        rootMargin: '-60px 0px -60% 0px',
+        threshold: 0
+      });
+
+      sections.forEach(section => observer.observe(section));
+    })();
   </script>
 
 </body>
