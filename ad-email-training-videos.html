@@ -517,7 +517,7 @@
     <span class="jump-nav-sep">/</span>
     <a href="#supplementary-drafts">Supplementary Drafts</a>
     <span class="jump-nav-sep">/</span>
-    <a href="#stats-tool">Stats Tool</a>
+    <a href="#stats-tool">Stats Reports</a>
   </nav>
 
   <div class="container">
@@ -702,21 +702,21 @@
       </div>
       <h1>Stats Report Generation</h1>
       <p class="subtitle">
-        Video walkthrough for generating advertiser performance reports using the stats tool.
+        Step-by-step process for generating advertiser performance reports. The workflow branches depending on the report type and whether the advertiser already has an article in place.
       </p>
     </div>
 
-    <!-- Video 4 -->
-    <div class="standalone-timeline">
+    <div class="timeline-group">
+
+    <!-- Step 1: Receive & Identify -->
     <div class="video-card" id="stats-tool">
       <div class="icon-box">
-        <!-- bar-chart icon -->
-        <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <!-- inbox icon -->
+        <svg viewBox="0 0 24 24"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
       </div>
       <div class="video-body">
-        <h2>Using the Stats Tool</h2>
-        <div class="video-meta">10 min</div>
-        <p>Explains how to use HAVEN's <a class="res-link" href="https://statsgen.havenlifestyles.com/" target="_blank">stats reporting tool</a> to generate performance reports for advertisers. The process involves locating the advertiser's listing in <a class="res-link" href="https://havenlifestyles.lightning.force.com/lightning/o/Opportunity/list?filterName=__Recent" target="_blank">Salesforce</a>, verifying the article and property details, exporting performance data from <a class="res-link" href="https://facebook.com/adsmanager" target="_blank">Facebook Ads Manager</a> and <a class="res-link" href="https://issuu.com/havenlifestyles" target="_blank">Issuu</a>, and uploading that data into a reporting form that automatically generates an analytics report. The final report link is then shared with the requesting sales rep so they can send it to the advertiser.</p>
+        <h2>1. Receive the Request &amp; Identify the Advertiser</h2>
+        <p>New stats requests come in via the <a class="res-link" href="https://monday.com" target="_blank">Monday.com stats request board</a> (and a dedicated Slack channel called <strong>stats requests</strong>). A sales rep fills out a form and the request appears on the board.</p>
 
         <button class="expand-toggle" data-open-text="View key steps" data-close-text="Hide key steps" aria-expanded="false" onclick="toggleExpand(this)">
           <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
@@ -725,18 +725,154 @@
         <div class="expandable-content" data-open="false">
           <div class="expandable-inner">
             <ol class="steps-list">
-              <li><strong>Identify the Advertiser Request</strong> — Stats report requests usually come from sales reps via Slack or message. Find the advertiser in <a class="res-link" href="https://havenlifestyles.lightning.force.com/lightning/o/Opportunity/list?filterName=__Recent" target="_blank">Salesforce</a> to determine which issue and listing should be used for the report.</li>
-              <li><strong>Locate the Listing in Salesforce</strong> — Open the advertiser's deal record in <a class="res-link" href="https://havenlifestyles.lightning.force.com/lightning/o/Opportunity/list?filterName=__Recent" target="_blank">Salesforce</a>. Check the issues they ran in, whether they have a subscription, and which issue is appropriate to generate stats from. Choose a recent issue with enough time for distribution so meaningful data exists.</li>
-              <li><strong>Verify the Article</strong> — In the Salesforce deal record, go to the Pagination tab and copy the article link. Open the article page and check that the listing appears correctly, property details look accurate, and the landing page works properly. Optionally verify the property on Zillow to confirm price accuracy. If updates are needed, request edits from Hammad Khan.</li>
-              <li><strong>Export Facebook Ads Data</strong> — Open <a class="res-link" href="https://facebook.com/adsmanager" target="_blank">Meta Ads Manager</a>. Navigate to the campaign for article promotions, find the specific article campaign, select the maximum date range, add the Age demographic metric, and export the report as CSV. This provides impressions, clicks, and demographic data.</li>
-              <li><strong>Export Issuu Magazine Stats</strong> — Locate the relevant issue in <a class="res-link" href="https://issuu.com/havenlifestyles" target="_blank">Issuu</a> (User: havenlifestyles / Password: TimBrown81!). Confirm the advertiser appears in the issue, open the issue analytics, select the maximum date range, and download the statistics. This provides magazine impressions and reading metrics.</li>
-              <li><strong>Upload Data to the Stats Tool Form</strong> — Open the <a class="res-link" href="https://statsgen.havenlifestyles.com/" target="_blank">stats reporting form</a>. Upload the Issuu stats CSV and Facebook Ads CSV. Enter additional details: publication date, Salesforce deal ID, and advertiser name (must match article exactly).</li>
-              <li><strong>Extract Article Data</strong> — Open the article page in incognito mode. View page source, copy the source code, and paste it into the <a class="res-link" href="https://statsgen.havenlifestyles.com/" target="_blank">stats tool form</a>. This allows the tool to extract property details, article metadata, and additional analytics data.</li>
-              <li><strong>Generate the Report</strong> — Submit the form. The scripts will process the uploaded data, combine digital and magazine stats, and generate a performance report. Review the output to confirm the metrics appear reasonable.</li>
-              <li><strong>Send the Report</strong> — Open the generated Analytics Report URL. Send the report link to the requesting sales rep (e.g., "HAVEN January–February 2026 Report"). The sales rep can then forward this report directly to the advertiser.</li>
-              <li><strong>Optional Data Verification</strong> — If needed, open the <a class="res-link" href="https://docs.google.com/spreadsheets/d/1W1BYDg5vf4O1ust8k1K2kZPyKjeTgFGxTQ9Ifbao_X0/edit?gid=571480481#gid=571480481" target="_blank">Stats Data Sheet</a>. This sheet contains all report data fields and can be used to verify metrics, manually update data, or troubleshoot discrepancies.</li>
+              <li><strong>Find the contact in Salesforce</strong> — Search for the advertiser in <a class="res-link" href="https://havenlifestyles.lightning.force.com/lightning/o/Opportunity/list?filterName=__Recent" target="_blank">Salesforce</a>. Note: names may differ between the request and Salesforce (e.g., "Kenny" vs. "Kenneth"). Check Gmail for name variations if needed.</li>
+              <li><strong>Open their most recent deal record</strong> — Look at the deal history and identify the most recent issue code (e.g., FLP-12125). Note the publish date and issue details.</li>
+              <li><strong>Copy the Deal ID</strong> — Extract the Deal ID from the Salesforce URL for use in the stats form later.</li>
+              <li><strong>Find the article</strong> — Check the Pagination tab on the deal record for an online article link. You can also search for the advertiser's article on the Haven website back end, or check the Google Drive layout folder linked in the deal record.</li>
             </ol>
-            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 2: Determine Path -->
+    <div class="video-card" id="stats-determine-path">
+      <div class="icon-box">
+        <!-- git-branch icon -->
+        <svg viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+      </div>
+      <div class="video-body">
+        <h2>2. Determine the Report Path</h2>
+        <p>Based on what you find, you'll follow one of four paths. The path depends on whether the advertiser has an article and whether their individual ad exists in Facebook Ads Manager.</p>
+
+        <button class="expand-toggle" data-open-text="View all paths" data-close-text="Hide all paths" aria-expanded="false" onclick="toggleExpand(this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          <span class="toggle-text">View all paths</span>
+        </button>
+        <div class="expandable-content" data-open="false">
+          <div class="expandable-inner">
+            <ol class="steps-list">
+              <li><strong>Path A — Individual Article Report</strong> — The advertiser has an article on the website <em>and</em> their specific ad exists in Facebook Ads Manager. You generate a report scoped to their individual article. When exporting from Ads Manager, <em>keep</em> the ad set name filter in place, add age demographic, and export the CSV.</li>
+              <li><strong>Path B — Market / Issue Report</strong> — The advertiser has an article, but their individual ad does <em>not</em> appear in Facebook Ads Manager. You generate a full market/issue report instead. When exporting from Ads Manager, <em>remove</em> the ad set name (so all ad sets in the campaign are included), add age demographic, and export the CSV. The report will show overall market performance rather than individual article stats.</li>
+              <li><strong>Path C — No Article Exists</strong> — No article was ever created for the advertiser (e.g., they didn't fill out property details). You need to <em>create the article first</em> on the website, then either create a Facebook ad campaign yourself at the same daily budget as other ads or send the article URL to Vine to have it added. Notify the sales rep that stats will be available in 2–3 days once the ad accumulates data, then come back and pull the stats.</li>
+              <li><strong>Path D — Non-Real-Estate / Vertical Ad</strong> — The advertiser is a vertical (e.g., construction, furniture, paving) rather than a real estate listing. These don't fit the standard report template. Ask Serphie if there's a banner ad or article for the advertiser. If stats can be pulled, generate them normally but <em>format the stats as bullet points in a text message</em> for the sales rep instead of a full report link. A dedicated vertical report template is being developed.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Export Facebook Ads Data -->
+    <div class="video-card" id="stats-facebook">
+      <div class="icon-box">
+        <!-- trending-up icon -->
+        <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+      </div>
+      <div class="video-body">
+        <h2>3. Export Facebook Ads Data</h2>
+        <p>Open <a class="res-link" href="https://facebook.com/adsmanager" target="_blank">Meta Ads Manager</a> under the Haven team account. Find the campaign matching the market and issue month (e.g., "FLP January").</p>
+
+        <button class="expand-toggle" data-open-text="View key steps" data-close-text="Hide key steps" aria-expanded="false" onclick="toggleExpand(this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          <span class="toggle-text">View key steps</span>
+        </button>
+        <div class="expandable-content" data-open="false">
+          <div class="expandable-inner">
+            <ol class="steps-list">
+              <li><strong>Navigate to the correct campaign</strong> — Campaigns are named by market and month (e.g., "FLP January"). Search or filter to find the right one.</li>
+              <li><strong>Search for the advertiser's article</strong> — Look for their article title within the campaign's ad sets. Make sure the date range is wide enough to show everything.</li>
+              <li><strong>If the individual ad exists (Path A)</strong> — Keep the ad set name filter in place. Add the <strong>Age</strong> demographic breakdown. Export as CSV.</li>
+              <li><strong>If the individual ad does NOT exist (Path B)</strong> — Select the full market campaign. <strong>Remove</strong> the ad set name field. Add the <strong>Age</strong> demographic breakdown. Export as CSV. This gives you the overall market stats instead.</li>
+              <li><strong>Create a custom report</strong> — Click "Create New Report," configure the columns (remove ad set name for market reports, keep it for individual), add age demographic, and export.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 4: Export Issuu Stats -->
+    <div class="video-card" id="stats-issuu">
+      <div class="icon-box">
+        <!-- book-open icon -->
+        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      </div>
+      <div class="video-body">
+        <h2>4. Export Issuu Magazine Stats</h2>
+        <p>Go to <a class="res-link" href="https://issuu.com/havenlifestyles" target="_blank">Issuu</a> and find the publication matching the issue and publish date from Salesforce.</p>
+
+        <button class="expand-toggle" data-open-text="View key steps" data-close-text="Hide key steps" aria-expanded="false" onclick="toggleExpand(this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          <span class="toggle-text">View key steps</span>
+        </button>
+        <div class="expandable-content" data-open="false">
+          <div class="expandable-inner">
+            <ol class="steps-list">
+              <li><strong>Find the issue</strong> — Navigate to Publications on Issuu. Search for the publication by market and date (e.g., "Haven Central North Florida" published 1/23/2026).</li>
+              <li><strong>Open the statistics</strong> — Go to the Statistics tab for that issue. Set the date range to <strong>All Time</strong> to maximize the impressions captured.</li>
+              <li><strong>Download the PDF</strong> — Download the stats as a PDF. This provides magazine impressions, reading metrics, and distribution data.</li>
+              <li><strong>Copy the Issue URL</strong> — You'll also need the publication URL and the cover image. For the cover image, inspect the page source and search for <code>og:image</code> to find the image URL.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 5: Submit to Stats Tool -->
+    <div class="video-card" id="stats-submit">
+      <div class="icon-box">
+        <!-- upload icon -->
+        <svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+      </div>
+      <div class="video-body">
+        <h2>5. Submit to the Stats Tool</h2>
+        <p>Open the <a class="res-link" href="https://stats-report-generation-hdkl.vercel.app/" target="_blank">stats reporting form</a> and upload all the data you've collected.</p>
+
+        <button class="expand-toggle" data-open-text="View key steps" data-close-text="Hide key steps" aria-expanded="false" onclick="toggleExpand(this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          <span class="toggle-text">View key steps</span>
+        </button>
+        <div class="expandable-content" data-open="false">
+          <div class="expandable-inner">
+            <ol class="steps-list">
+              <li><strong>Upload the Meta/Facebook CSV</strong> — The CSV you exported from Ads Manager.</li>
+              <li><strong>Upload the Issuu stats PDF</strong> — The PDF you downloaded from Issuu.</li>
+              <li><strong>Enter the publish date</strong> — The date the issue was published online (from Salesforce or Issuu), formatted as MM/DD/YYYY.</li>
+              <li><strong>Enter the Issue publication URL</strong> — The Issuu URL for the digital magazine.</li>
+              <li><strong>Enter the magazine cover image URL</strong> — Found by inspecting the Issuu page source and searching for <code>og:image</code>. Can also be found on the Haven website. If left blank, check whether it auto-populates; if not, you can add it manually to the spreadsheet afterward.</li>
+              <li><strong>Enter the Salesforce Deal ID</strong> — Extracted from the deal record URL in Salesforce.</li>
+              <li><strong>Select the report type</strong> — Choose <strong>Individual Article</strong> (Path A) or <strong>Market / Issue Report</strong> (Path B) depending on whether the advertiser's specific ad was found in Ads Manager.</li>
+              <li><strong>Enter the advertiser name</strong> — Must match <em>exactly</em> as it appears on the article.</li>
+              <li><strong>Paste the article source code</strong> — Open the article page, view page source (not the console), copy the full HTML, and paste it into the form. This extracts the agent image, property details, and article metadata.</li>
+              <li><strong>Submit the form</strong> — Click process. The form posts data to a Google Sheet and generates the report. A new row is created (or an existing row is updated if the Deal ID already exists).</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 6: Verify & Deliver -->
+    <div class="video-card" id="stats-deliver">
+      <div class="icon-box">
+        <!-- send icon -->
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </div>
+      <div class="video-body">
+        <h2>6. Verify &amp; Deliver the Report</h2>
+        <p>Once the form processes, it generates a report link. Check that everything looks right, then send it to the sales rep.</p>
+
+        <button class="expand-toggle" data-open-text="View key steps" data-close-text="Hide key steps" aria-expanded="false" onclick="toggleExpand(this)">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+          <span class="toggle-text">View key steps</span>
+        </button>
+        <div class="expandable-content" data-open="false">
+          <div class="expandable-inner">
+            <ol class="steps-list">
+              <li><strong>Hard refresh the report page</strong> — After the form processes, open the generated report URL and do a hard refresh (Shift+Cmd+R on Mac) to ensure the latest data displays.</li>
+              <li><strong>Check the report contents</strong> — Verify that all links work, images load correctly (especially the magazine cover), the landing page is correct, and the stats look reasonable. The report pulls total impressions from the Issuu PDF, clicks and demographics from the Facebook CSV, and article/agent details from the source code.</li>
+              <li><strong>Fix the cover image if missing</strong> — If the magazine cover image didn't auto-populate, add it manually to the spreadsheet in the designated column (AF), then hard refresh the report.</li>
+              <li><strong>Send the report link to the sales rep</strong> — Find the requesting rep on the Monday.com board. Send them the plain-text report URL so they can copy/paste it into an email for the advertiser. Include the issue name (e.g., "January–February 2026 Report").</li>
+              <li><strong>For Path D (vertical ads)</strong> — If a full report doesn't apply, format the stats as bullet points and send them as a text message to the sales rep instead of a report link.</li>
+            </ol>
           </div>
         </div>
 
@@ -747,13 +883,14 @@
         <div class="expandable-content" data-open="false">
           <div class="expandable-inner">
             <div class="video-embed">
-              <iframe src="https://www.loom.com/embed/091a71d2bbac4ba59ddd91c5b8f06916" title="Stats Tool" allowfullscreen></iframe>
+              <iframe src="https://www.loom.com/embed/091a71d2bbac4ba59ddd91c5b8f06916" title="Stats Report Generation Walkthrough" allowfullscreen></iframe>
             </div>
           </div>
         </div>
       </div>
     </div>
-    </div><!-- end .standalone-timeline -->
+
+    </div><!-- end .timeline-group -->
 
   </div>
 
